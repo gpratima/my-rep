@@ -1,0 +1,27 @@
+export PROJECT_ID="$(gcloud config get-value project -q)"
+
+docker build -t gcr.io/${PROJECT_ID}/hello-app:v1 .   (to build image)
+
+docker images (to verify that the image built)
+
+gcloud auth configure-docker (authhing)
+
+docker push gcr.io/${PROJECT_ID}/hello-app:v1
+
+gcloud container clusters create hello-cluster --region asia-southeast1 --num-nodes=1
+
+gcloud compute instances list
+
+kubectl run hello-web --image=gcr.io/${PROJECT_ID}/hello-app:v1 --port 8080
+
+kubectl get pods
+
+kubectl expose deployment hello-web --type=LoadBalancer --port80 --target-port 8080
+
+kubectl get service (getIP)
+
+kubectl scale deployment hello-web --replicas=3
+
+kubectl delete service hello-web (delete)
+
+gcloud conatiner cluster delete hello-cluster --region asia-southeast1
