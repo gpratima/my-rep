@@ -24,4 +24,4 @@ kubectl scale deployment hello-web --replicas=3
 
 kubectl delete service hello-web (delete)
 
-gcloud conatiner cluster delete hello-cluster --region asia-southeast1
+gcloud container cluster delete hello-cluster --region asia-southeast1
